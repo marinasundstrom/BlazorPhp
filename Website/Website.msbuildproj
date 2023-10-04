@@ -1,0 +1,25 @@
+<Project Sdk="Peachpie.NET.Sdk/1.0.6">
+
+  <PropertyGroup>
+    <OutputType>Library</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <AssemblyName>BlazorPhpTest</AssemblyName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile
+      Include="**/*.php"
+      Exclude="obj/**;bin/**;" />
+    <Content
+      Include="**"
+      Exclude="**/*.php;obj/**;bin/**;*.msbuildproj;.vscode/**;.vs/**;">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <None Remove="**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BlazorExtensions\BlazorExtensions.csproj" />
+    <ProjectReference Include="..\BlazorClassLib\BlazorClassLib.csproj" />
+  </ItemGroup>
+</Project>
