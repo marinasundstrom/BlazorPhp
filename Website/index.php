@@ -17,11 +17,9 @@
     ?>
 
     <?php
-    /*
     echo Peachpie\AspNetCore\HttpContextExtension::Component<BlazorClassLib\Counter>([
         "IncrementBy" => 2
     ]);
-    */
     ?>
 
     <script src="_framework/blazor.web.js"></script>

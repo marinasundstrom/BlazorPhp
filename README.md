@@ -2,7 +2,9 @@
 
 This project is an experiment to implement Blazor support in PHP on Peachpie.
 
-Currently, you can only render static Razor components. Read section below.
+It can render _interactive components_ (see ``Counter``), with the caveat that I used reflection to expose internal functionality.
+
+This will only work with .NET 8 RC1, since there are changes to the method signatures in RC 2.
 
 ## Background
 
@@ -45,10 +47,9 @@ However, PHP requires you to get the rendered - the right rendered that supports
 
 The ``HtmlRenderer`` only emits static HTMl - and it doesn't support interactivity.
 
-One possible solution would be if the .NET Team opened up the ``EndpointHtmlRenderer``. (make it public)
-In preparation, the code for this has been added, but it is commented out.
+One possible solution would be if the .NET Team exposed the functionality of ``EndpointHtmlRenderer``.
 
-If this is done, then it is just a matter of uncommenting and recompiling.
+In the meantime, I have done a Reflection hack. This might break with future versions as the APIs are internal.
 
 ## WebAssembly support
 
