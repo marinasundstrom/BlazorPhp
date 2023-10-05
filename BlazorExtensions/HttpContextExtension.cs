@@ -44,8 +44,7 @@ namespace Peachpie.AspNetCore
 
             await htmlRenderer.Dispatcher.InvokeAsync(async () =>
             {
-                var p = ((IDictionary<IntStringKey, PhpValue>)parameters).ToDictionary(x => x.Key.String, x => x.Value.ToClr());
-                var @params = ParameterView.FromDictionary(p);
+                var @params = ParameterView.FromDictionary(componentParameters);
                 var output = await htmlRenderer.RenderComponentAsync<TComponent>(@params);
 
                 output.WriteHtmlTo(textWriter);

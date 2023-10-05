@@ -10,7 +10,21 @@ Rendering Razor View partials in PHP is already supported by Peachpie. This exte
 
 Peachpie is a PHP compiler and runtime for .NET. Enabling you to run your PHP code on .NET, and interop with code written for .NET/C#.
 
-### Scenario
+## Sample
+
+In ``index.php``:
+
+```php
+<?php
+
+echo Peachpie\AspNetCore\HttpContextExtension::Component<BlazorClassLib\RenderMessage>([
+    "Message" => "Hello from the Render Message component!"
+]);
+```
+
+Where ``RenderMessage`` is the Razor component.
+
+## Scenario
 
 Embedding interactive Razor components in PHP apps running on .NET  - including Wordpress.NET
 
@@ -25,13 +39,13 @@ That way you will not need to use Razor Views as an intermediary for rendering t
 
 ## Issues with interactive components
 
-I have based this loosely on the [BlazorMinimalApiTes](https://github.com/marinasundstrom/BlazorMinimalApiTest) project, it enables interactive components through Minimal API endpoints - both running on Server, and in WebAssembly.
+I have based this loosely on the [BlazorMinimalApiTest](https://github.com/marinasundstrom/BlazorMinimalApiTest) project, it enables interactive components through Minimal API endpoints - both running on Server, and in WebAssembly.
 
 However, PHP requires you to get the rendered - the right rendered that supports emitting code for the rendering modes.
 
 The ``HtmlRenderer`` only emits static HTMl - and it doesn't support interactivity.
 
-One possible solution would be if the .NET Team opened up the ``EndpointHtmlRenderer`. (make it public)
+One possible solution would be if the .NET Team opened up the ``EndpointHtmlRenderer``. (make it public)
 In preparation, the code for this has been added, but it is commented out.
 
 If this is done, then it is just a matter of uncommenting and recompiling.
@@ -39,3 +53,9 @@ If this is done, then it is just a matter of uncommenting and recompiling.
 ## WebAssembly support
 
 If everything works, you would simply add a Blazor WebAssembly standalone project, and reference it from the ``Server`` project. The set the appropriate render modes.
+
+## Issue with casting PHP parameters to the right CLR type
+
+The component might take a parameter of type ``int`` but Peachpie is casting it to ``long``.
+
+Perhaps special logics is needed.
