@@ -68,14 +68,28 @@ One possible solution would be if the .NET Team exposed the functionality of ``E
 
 In the meantime, I have done a Reflection hack. This might break with future versions as the APIs are internal.
 
+### Components can be embedded
+
+Although not demonstrated, you can embed interactive components (both Server and WebAssembly) within static server-side rendered components. This is part of .NET 8.
+
 ### WebAssembly support
 
 If everything works, you would simply add a Blazor WebAssembly standalone project, and reference it from the ``Server`` project. The set the appropriate render modes.
 
-See included ``Client`` project.
+See ``Client`` project.
 
 ### Issue with casting PHP parameters to the right CLR type
 
 The component might take a parameter of type ``int`` but Peachpie is casting it to ``long``.
 
 Perhaps special logics is needed.
+
+### On the project structure and references
+
+The reason for why put components in ``BlazorClassLib`` is so that the ``Website`` project can reference those component.
+
+### Status of Peachpie
+
+The status of Peachpie is to me unknown.
+
+The tooling that I used in VS Code was running on .NET 5 - and that is no longer supported.
