@@ -12,6 +12,24 @@ Rendering Razor View partials in PHP is already supported by Peachpie. This exte
 
 Peachpie is a PHP compiler and runtime for .NET. Enabling you to run your PHP code on .NET, and interop with code written for .NET/C#.
 
+## Scenario
+
+Embedding interactive Razor components in PHP apps running on .NET  - including Wordpress.NET
+
+That way you will not need to use Razor Views as an intermediary for rendering the components.
+
+## Screenshots
+
+<img src="/images/result.png" width="500">
+
+### PHP page
+
+<img src="/images/page.png" width="500">
+
+### ``Counter`` component
+
+<img src="/images/counter.png" width="500">
+
 ## Sample
 
 In ``index.php``:
@@ -26,20 +44,18 @@ echo Peachpie\AspNetCore\HttpContextExtension::Component<BlazorClassLib\RenderMe
 
 Where ``RenderMessage`` is the Razor component.
 
-## Scenario
-
-Embedding interactive Razor components in PHP apps running on .NET  - including Wordpress.NET
-
-That way you will not need to use Razor Views as an intermediary for rendering the components.
-
 ## Projects
+
+This solution consists of the following projects:
 
 * ``Server`` - The hosting web app
 * ``Website`` - The PHP part of the app
-* ``BlazorExtensions`` - The glue that makes Blazor in PHP possible
+* ``BlazorExtensions`` - The glue that makes Blazor in PHP possible - including the hack with reflection
 * ``BlazorClassLib`` - Contains the Blazor components
 
-## Issues with interactive components
+## Notes
+
+### Issues with interactive components
 
 I have based this loosely on the [BlazorMinimalApiTest](https://github.com/marinasundstrom/BlazorMinimalApiTest) project, it enables interactive components through Minimal API endpoints - both running on Server, and in WebAssembly.
 
@@ -51,11 +67,11 @@ One possible solution would be if the .NET Team exposed the functionality of ``E
 
 In the meantime, I have done a Reflection hack. This might break with future versions as the APIs are internal.
 
-## WebAssembly support
+### WebAssembly support
 
 If everything works, you would simply add a Blazor WebAssembly standalone project, and reference it from the ``Server`` project. The set the appropriate render modes.
 
-## Issue with casting PHP parameters to the right CLR type
+### Issue with casting PHP parameters to the right CLR type
 
 The component might take a parameter of type ``int`` but Peachpie is casting it to ``long``.
 
