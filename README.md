@@ -52,6 +52,7 @@ This solution consists of the following projects:
 * ``Website`` - The PHP part of the app
 * ``BlazorExtensions`` - The glue that makes Blazor in PHP possible - including the hack with reflection
 * ``BlazorClassLib`` - Contains the Blazor components
+* ``Client`` - The Blazor WebAssembly app from which we render components
 
 ## Notes
 
@@ -70,6 +71,8 @@ In the meantime, I have done a Reflection hack. This might break with future ver
 ### WebAssembly support
 
 If everything works, you would simply add a Blazor WebAssembly standalone project, and reference it from the ``Server`` project. The set the appropriate render modes.
+
+See included ``Client`` project.
 
 ### Issue with casting PHP parameters to the right CLR type
 

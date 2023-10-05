@@ -22,6 +22,10 @@
     ]);
     ?>
 
+    <?php
+    echo Peachpie\AspNetCore\HttpContextExtension::Component<Client\Counter>([]);
+    ?>
+
     <script src="_framework/blazor.web.js"></script>
     
 </body>

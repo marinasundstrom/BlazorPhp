@@ -7,7 +7,11 @@
 
   <ItemGroup>
     <PackageReference Include="Peachpie.AspNetCore.Web" Version="1.0.6" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Website\Website.msbuildproj" />
+    <ProjectReference Include="..\Client\Client.csproj" />
   </ItemGroup>
 
 </Project>

@@ -21,5 +21,6 @@
   <ItemGroup>
     <ProjectReference Include="..\BlazorExtensions\BlazorExtensions.csproj" />
     <ProjectReference Include="..\BlazorClassLib\BlazorClassLib.csproj" />
+    <ProjectReference Include="..\Client\Client.csproj" />
   </ItemGroup>
 </Project>

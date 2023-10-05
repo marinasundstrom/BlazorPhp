@@ -1,0 +1,18 @@
+@attribute [RenderModeWebAssembly]
+
+<h1>Counter in Client</h1>
+
+<p role="status">Current count: @currentCount</p>
+
+<button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
+
+@code {
+    private long currentCount = 0;
+
+    private void IncrementCount()
+    {
+        currentCount += IncrementBy;
+    }
+
+    [Parameter] public long IncrementBy { get; set; } = 1;
+}
